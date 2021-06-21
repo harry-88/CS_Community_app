@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CS_Community</string>
+    <string name="emailText">Enter Email</string>
+    <string name="btnLoginAccount">Login to account</string>
+    <string name="btnSignUp">Need a new Account</string>
+    <string name="password">Password</string>
+    <string name="account_setting" />
+    <string name="account_Setting" />
+    <string name="accountSetting">account setting</string>
+    <string name="logout">Logout</string>
+    <string name="create_new_account">create new account</string>
+    <string name="already_account">Already have an account?</string>
+    <string name="setupYourName">Your Name</string>
+    <string name="setupSaveAccountSetting">Save Account Setting</string>
+</resources>

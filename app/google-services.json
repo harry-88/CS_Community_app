@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "450471709758",
+    "project_id": "cs-community-e4311",
+    "storage_bucket": "cs-community-e4311.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450471709758:android:ef5dba51da9b8016b9556f",
+        "android_client_info": {
+          "package_name": "com.atmostsoft.cs_community"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450471709758-qld8tu8blo6i1k2gnba2eg4p2cb8622p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD053re2CnAbYKFLyT1NiT_SP6xo4a4LrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450471709758-qld8tu8blo6i1k2gnba2eg4p2cb8622p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
