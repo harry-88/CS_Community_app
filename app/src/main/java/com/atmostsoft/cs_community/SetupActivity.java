@@ -23,11 +23,15 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -41,12 +45,14 @@ public class SetupActivity extends AppCompatActivity {
 
     private StorageReference storageReference;
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firebaseFirestore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
         circleImageView = findViewById(R.id.setupImage);
         etName = findViewById(R.id.setUserName);
+        firebaseFirestore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.setupProgressBar);
         btnSubmit = findViewById(R.id.setupbtn);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +70,10 @@ public class SetupActivity extends AppCompatActivity {
                                     if (task.isSuccessful())
                                     {
 
-                                        Uri getResult = task.getResult().getUploadSessionUri();
-                                        Toast.makeText(SetupActivity.this, getResult.toString(), Toast.LENGTH_SHORT).show();
+                                        Map<String,String> usermap = new HashMap<>();
+
+//                                        firebaseFirestore.collection("Users").document(user_id).set();
+                                        Toast.makeText(SetupActivity.this, "image uploaded", Toast.LENGTH_SHORT).show();
                                     }
                                     else
                                     {
@@ -101,11 +109,18 @@ public class SetupActivity extends AppCompatActivity {
 
 
                 }
+                else
+                {
+                    bringImaePicker();
+                }
             }
+
         });
     }
 
 
+    private void bringImaePicker() {
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
