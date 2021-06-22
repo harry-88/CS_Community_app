@@ -32,6 +32,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -72,15 +73,35 @@ public class SetupActivity extends AppCompatActivity {
 
                                         Map<String,String> usermap = new HashMap<>();
 
-//                                        firebaseFirestore.collection("Users").document(user_id).set();
+                                        usermap.put("name",name);
+                                        usermap.put("image",mainImageUri.toString());
+
+                                        firebaseFirestore.collection("Users").document(user_id).set(usermap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful())
+                                                {
+                                                    Toast.makeText(SetupActivity.this, "setting updated", Toast.LENGTH_SHORT).show();
+
+                                                    Intent intent = new Intent(SetupActivity.this,com.atmostsoft.cs_community.MainActivity.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
+                                                else{
+                                                    String error = task.getException().getMessage();
+                                                    Toast.makeText(SetupActivity.this, error, Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
                                         Toast.makeText(SetupActivity.this, "image uploaded", Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.INVISIBLE);
                                     }
                                     else
                                     {
                                         String error = task.getException().getMessage();
                                         Toast.makeText(SetupActivity.this, error, Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.INVISIBLE);
                                     }
-                                    progressBar.setVisibility(View.INVISIBLE);
                                 }
                             });
                 }
